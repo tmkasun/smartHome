@@ -3,8 +3,8 @@
 .buildpath
 .project
 .settings/
-
-
+media/
+.gitignore*
 # Compiled source #
 ###################
 *.com
