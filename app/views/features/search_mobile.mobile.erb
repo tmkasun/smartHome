@@ -1,0 +1,22 @@
+<table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+	<thead>
+		<tr class="ui-bar-d">
+			<th>Index</th>
+			<th>Name</th>
+			<th>Phone</th>
+			<th data-priority="3">Full Name</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @search_result.each do |result|%>
+		<tr>
+			<th><a href="#" data-rel="external"><%= result.nic_number%></a></th>
+			<td><%= result.common_name%></td>
+			<td><%= result.phone_number%></td>
+			<td><%= result.name%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+

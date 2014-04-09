@@ -1,0 +1,30 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+# FIT Student information system
+
+Students of faculty of infomation technology university of moratuwa can access to their friends information via this system
+
+## Installation
+
+Clone this repo
+
+    git clone git@github.com:tmkasun/uni.git
+
+And then execute:
+
+    $ bundle
+
+## Contributing
+
+    Fork it
+    Create your feature branch (git checkout -b my-new-feature)
+    Commit your changes (git commit -am 'Add some feature')
+    Push to the branch (git push origin my-new-feature)
+    Create new Pull Request
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
