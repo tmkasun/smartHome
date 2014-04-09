@@ -1,17 +1,8 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-# FIT Student information system
-
-Students of faculty of infomation technology university of moratuwa can access to their friends information via this system
-
 ## Installation
 
 Clone this repo
 
-    git clone git@github.com:tmkasun/uni.git
+    git clone
 
 And then execute:
 
