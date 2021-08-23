@@ -1,29 +1,10 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+## Intro
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+Smart home PWA webapp to monitor & control home appliances. Work on top of [a REST API](https://github.com/tmkasun/me_api) defined in OAS 3.0
 
-> Free React Admin Dashboard made with Material-UI components and React.
+Support controlling [SonOff devices](https://sonoff.tech/developer/)
 
-![preview](public/static/preview.png)
-
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **7** Demo pages                                      | **42+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
-
-## Page demo
-
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Register](https://minimal-kit-react.vercel.app/register)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+UI app was bootstrapped from [Minimal React Kit](https://minimal-kit-react.vercel.app/)
 
 ## Getting started
 
@@ -32,9 +13,9 @@
 - Start the server: `npm run start` or `yarn start`
 
 ## License
+Distributed under the MIT License.
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
-
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
 ## Contact us
 
 Email Us: support@minimals.cc
