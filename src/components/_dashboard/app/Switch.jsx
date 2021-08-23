@@ -51,10 +51,11 @@ const RootStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.lighter
 }));
 
-export default function AppWeeklySales(props) {
-  const { switchId = '4' } = props;
+export default function Switch(props) {
+  const { switchId, switchName } = props;
   const [switchInfo, setSwitchInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [error, setError] = useState(null);
   const {
     seq: { data = {} }
   } = switchInfo || { seq: {} };
@@ -97,9 +98,17 @@ export default function AppWeeklySales(props) {
       redirect: 'follow'
     };
     fetch(`https://home.knnect.com/switches/${switchId}`, requestOptions)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
+        return response.json();
+      })
       .then(setSwitchInfo)
-      .catch((error) => console.log('error', error))
+      .catch((error) => {
+        console.log('error', error);
+        setError(error);
+      })
       .finally(() => setIsLoading(false));
   };
   useEffect(fetchData, [switchId]);
@@ -160,6 +169,7 @@ export default function AppWeeklySales(props) {
         type="submit"
         variant="contained"
         loading={isLoading}
+        disabled={error}
       >
         {data.switch === 'off' ? 'On' : 'Off'}
       </LoadingButton>

@@ -8,7 +8,7 @@ import {
   AppBugReports,
   AppItemOrders,
   AppNewsUpdate,
-  AppWeeklySales,
+  Switch,
   AppOrderTimeline,
   AppCurrentVisits,
   AppWebsiteVisits,
@@ -16,10 +16,13 @@ import {
   AppCurrentSubject,
   AppConversionRates
 } from '../components/_dashboard/app';
+import devices from '../utils/devices';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
+  const b = 'ac';
+  const a = devices[b];
   return (
     <Page title="Dashboard | Minimal-UI">
       <Container maxWidth="xl">
@@ -27,9 +30,11 @@ export default function DashboardApp() {
           <Typography variant="h4">Hi, Welcome back</Typography>
         </Box>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWeeklySales />
-          </Grid>
+          {Object.entries(devices).map(([name, id]) => (
+            <Grid key={id} item xs={12} sm={6} md={3}>
+              <Switch switchId={id} switchName={name} />
+            </Grid>
+          ))}
           {/* <Grid item xs={12} sm={6} md={3}>
             <AppNewUsers />
           </Grid>
