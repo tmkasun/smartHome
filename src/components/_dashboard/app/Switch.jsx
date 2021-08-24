@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 import bulbOutlined from '@iconify/icons-ant-design/bulb-outlined';
 import bulbFilled from '@iconify/icons-ant-design/bulb-filled';
+import acUnitIcon from '@iconify/icons-ic/baseline-ac-unit';
 // material
 import Tooltip from '@material-ui/core/Tooltip';
 import { alpha, styled } from '@material-ui/core/styles';
@@ -18,6 +19,9 @@ import { BorderLinearProgress, FacebookCircularProgress } from './components/Sig
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
+  switchTitle: {
+    textTransform: 'capitalize'
+  },
   iconWrapper: {
     margin: 'auto',
     display: 'flex',
@@ -60,7 +64,7 @@ export default function Switch(props) {
     seq: { data = {} }
   } = switchInfo || { seq: {} };
   const isOn = data.switch === 'on';
-  const clasess = useStyles(isOn);
+  const classes = useStyles(isOn);
 
   const handleOnClick = (state) => {
     setIsLoading(true);
@@ -112,6 +116,12 @@ export default function Switch(props) {
       .finally(() => setIsLoading(false));
   };
   useEffect(fetchData, [switchId]);
+  let icon;
+  if (switchName === 'ac') {
+    icon = acUnitIcon;
+  } else {
+    icon = isOn ? bulbFilled : bulbOutlined;
+  }
 
   return (
     <RootStyle>
@@ -119,21 +129,23 @@ export default function Switch(props) {
         onClick={() => {
           handleOnClick(data.switch);
         }}
-        className={clasess.iconWrapper}
+        className={classes.iconWrapper}
       >
         {isLoading ? (
           <FacebookCircularProgress />
         ) : (
           <Icon
             style={{ color: isOn ? '#f2ffe0' : 'inherit' }}
-            icon={isOn ? bulbFilled : bulbOutlined}
+            icon={icon}
             width={54}
             height={54}
           />
         )}
       </Button>
-      <Typography variant="h3">WiFi {data.signalStrength}</Typography>
-      <Tooltip title="Signal strength">
+      <Typography className={classes.switchTitle} variant="h3">
+        {switchName}
+      </Typography>
+      <Tooltip title={`Signal strength (${data.signalStrength})`}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box sx={{ width: '100%', mr: 1 }}>
             <BorderLinearProgress variant="determinate" value={normalise(data.signalStrength)} />

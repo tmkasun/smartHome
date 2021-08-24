@@ -21,8 +21,6 @@ import devices from '../utils/devices';
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const b = 'ac';
-  const a = devices[b];
   return (
     <Page title="Dashboard | Minimal-UI">
       <Container maxWidth="xl">
