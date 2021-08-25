@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import bulbOutlined from '@iconify/icons-ant-design/bulb-outlined';
 import bulbFilled from '@iconify/icons-ant-design/bulb-filled';
@@ -6,7 +7,6 @@ import acUnitIcon from '@iconify/icons-ic/baseline-ac-unit';
 // material
 import Tooltip from '@material-ui/core/Tooltip';
 import { alpha, styled } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/styles';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -18,28 +18,6 @@ import { BorderLinearProgress, FacebookCircularProgress } from './components/Sig
 
 // ----------------------------------------------------------------------
 
-const useStyles = makeStyles((theme) => ({
-  switchTitle: {
-    textTransform: 'capitalize'
-  },
-  iconWrapper: {
-    margin: 'auto',
-    display: 'flex',
-    borderRadius: '50%',
-    alignItems: 'center',
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-    backgroundColor: (isOn) => (isOn ? 'white' : 'inherit'),
-    boxShadow: (isOn) => (isOn ? '0px 0px 40px 20px #fff' : 'none'),
-    justifyContent: 'center',
-    marginBottom: theme.spacing(3),
-    color: theme.palette.primary.dark,
-    backgroundImage: `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0)} 0%, ${alpha(
-      theme.palette.primary.dark,
-      0.24
-    )} 100%)`
-  }
-}));
 // ----------------------------------------------------------------------
 
 const MIN = -90; // Minimum expected value
@@ -55,6 +33,11 @@ const RootStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.lighter
 }));
 
+/**
+ * sdsadsa
+ * @param {Object} props Sample
+ * @returns Wola
+ */
 export default function Switch(props) {
   const { switchId, switchName } = props;
   const [switchInfo, setSwitchInfo] = useState(null);
@@ -64,7 +47,7 @@ export default function Switch(props) {
     seq: { data = {} }
   } = switchInfo || { seq: {} };
   const isOn = data.switch === 'on';
-  const classes = useStyles(isOn);
+  // const classes = useStyles(isOn);
 
   const handleOnClick = (state) => {
     setIsLoading(true);
@@ -101,19 +84,20 @@ export default function Switch(props) {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch(`https://home.knnect.com/switches/${switchId}`, requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Something went wrong');
-        }
-        return response.json();
-      })
-      .then(setSwitchInfo)
-      .catch((error) => {
-        console.log('error', error);
-        setError(error);
-      })
-      .finally(() => setIsLoading(false));
+    // https://www.npmjs.com/package/msw
+    // fetch(`https://home.knnect.com/switches/${switchId}`, requestOptions)
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error('Something went wrong');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(setSwitchInfo)
+    //   .catch((error) => {
+    //     console.log('error', error);
+    //     setError(error);
+    //   })
+    //   .finally(() => setIsLoading(false));
   };
   useEffect(fetchData, [switchId]);
   let icon;
@@ -129,7 +113,24 @@ export default function Switch(props) {
         onClick={() => {
           handleOnClick(data.switch);
         }}
-        className={classes.iconWrapper}
+        sx={{
+          margin: 'auto',
+          display: 'flex',
+          borderRadius: '50%',
+          alignItems: 'center',
+          width: 10,
+          height: 10,
+          backgroundColor: isOn ? 'white' : 'inherit',
+          boxShadow: isOn ? '0px 0px 40px 20px #fff' : 'none',
+          justifyContent: 'center',
+          marginBottom: 3,
+          color: (theme) => theme.palette.primary.dark,
+          backgroundImage: (theme) =>
+            `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0)} 0%, ${alpha(
+              theme.palette.primary.dark,
+              0.24
+            )} 100%)`
+        }}
       >
         {isLoading ? (
           <FacebookCircularProgress />
@@ -142,7 +143,12 @@ export default function Switch(props) {
           />
         )}
       </Button>
-      <Typography className={classes.switchTitle} variant="h3">
+      <Typography
+        sx={{
+          textTransform: 'capitalize'
+        }}
+        variant="h3"
+      >
         {switchName}
       </Typography>
       <Tooltip title={`Signal strength (${data.signalStrength})`}>
@@ -188,3 +194,14 @@ export default function Switch(props) {
     </RootStyle>
   );
 }
+
+Switch.propTypes = {
+  /**
+   Sample doc 1
+   */
+  switchId: PropTypes.string.isRequired,
+  /**
+   Sample doc 2
+   */
+  switchName: PropTypes.string
+};

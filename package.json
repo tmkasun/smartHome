@@ -10,7 +10,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx ./src",
-    "lint:fix": "eslint --fix --ext .js,.jsx ./src"
+    "lint:fix": "eslint --fix --ext .js,.jsx ./src",
+    "sb": "start-storybook -s ./public/static -p 6006",
+    "sb:ci": "start-storybook -s ./public/static -p 6006 --ci",
+    "sb:docs": "start-storybook --docs --no-manager-cache",
+    "sb:t": "jest ./src/components/_dashboard/app/Switch.test.js",
+    "sb:test": "start-server-and-test sb:ci http://localhost:6006 sb:t"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +59,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "history": "^5.0.1",
+    "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
@@ -65,6 +71,7 @@
     "react-scripts": "4.0.0",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
+    "start-server-and-test": "^1.13.1",
     "web-vitals": "^2.1.0",
     "workbox-background-sync": "^6.2.4",
     "workbox-broadcast-update": "^6.2.4",
@@ -83,6 +90,14 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-docs": "^6.4.0-alpha.32",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/addon-storyshots": "^6.3.7",
+    "@storybook/react": "^6.3.7",
+    "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -93,6 +108,9 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.1"
+    "msw": "^0.35.0",
+    "msw-storybook-addon": "^1.2.0",
+    "prettier": "^2.3.1",
+    "react-test-renderer": "^17.0.2"
   }
 }
