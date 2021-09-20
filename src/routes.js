@@ -4,7 +4,7 @@ import DashboardLayout from './layouts/dashboard';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import DashboardApp from './pages/DashboardApp';
-import User from './pages/User';
+import Banking from './pages/Banking';
 
 // ----------------------------------------------------------------------
 
@@ -14,9 +14,9 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { path: '/', element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> }
+        { path: '/dashboard', element: <Navigate to="/dashboard/app" replace /> },
+        { path: '/dashboard/app', element: <DashboardApp /> },
+        { path: '/dashboard/banking', element: <Banking /> }
       ]
     },
     {

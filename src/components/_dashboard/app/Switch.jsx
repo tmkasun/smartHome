@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 import bulbOutlined from '@iconify/icons-ant-design/bulb-outlined';
 import bulbFilled from '@iconify/icons-ant-design/bulb-filled';
 import acUnitIcon from '@iconify/icons-ic/baseline-ac-unit';
 // material
-import Tooltip from '@material-ui/core/Tooltip';
-import { alpha, styled } from '@material-ui/core/styles';
-
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import { LoadingButton } from '@material-ui/lab';
-import { Card, Typography } from '@material-ui/core';
+import Tooltip from '@mui/material/Tooltip';
+import { alpha, styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { LoadingButton } from '@mui/lab';
+import { Card, Typography } from '@mui/material';
 // custom
 
 import { BorderLinearProgress, FacebookCircularProgress } from './components/SignalStrength';
-
-// ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
@@ -33,11 +29,6 @@ const RootStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.lighter
 }));
 
-/**
- * sdsadsa
- * @param {Object} props Sample
- * @returns Wola
- */
 export default function Switch(props) {
   const { switchId, switchName } = props;
   const [switchInfo, setSwitchInfo] = useState(null);
@@ -47,7 +38,6 @@ export default function Switch(props) {
     seq: { data = {} }
   } = switchInfo || { seq: {} };
   const isOn = data.switch === 'on';
-  // const classes = useStyles(isOn);
 
   const handleOnClick = (state) => {
     setIsLoading(true);
@@ -73,7 +63,7 @@ export default function Switch(props) {
       redirect: 'follow'
     };
 
-    fetch(`https://home.knnect.com/switches/${switchId}/state`, requestOptions).finally(() =>
+    fetch(`https://home.knnect.com/apis/switches/${switchId}/state`, requestOptions).finally(() =>
       setIsLoading(false)
     );
     setSwitchInfo(nextSwitchState);
@@ -84,20 +74,19 @@ export default function Switch(props) {
       method: 'GET',
       redirect: 'follow'
     };
-    // https://www.npmjs.com/package/msw
-    // fetch(`https://home.knnect.com/switches/${switchId}`, requestOptions)
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Something went wrong');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(setSwitchInfo)
-    //   .catch((error) => {
-    //     console.log('error', error);
-    //     setError(error);
-    //   })
-    //   .finally(() => setIsLoading(false));
+    fetch(`https://home.knnect.com/apis/switches/${switchId}`, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        }
+        return response.json();
+      })
+      .then(setSwitchInfo)
+      .catch((error) => {
+        console.log('error', error);
+        setError(error);
+      })
+      .finally(() => setIsLoading(false));
   };
   useEffect(fetchData, [switchId]);
   let icon;
@@ -124,7 +113,7 @@ export default function Switch(props) {
           boxShadow: isOn ? '0px 0px 40px 20px #fff' : 'none',
           justifyContent: 'center',
           marginBottom: 3,
-          color: (theme) => theme.palette.primary.dark,
+          color: 'primary.dark',
           backgroundImage: (theme) =>
             `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0)} 0%, ${alpha(
               theme.palette.primary.dark,
@@ -194,14 +183,3 @@ export default function Switch(props) {
     </RootStyle>
   );
 }
-
-Switch.propTypes = {
-  /**
-   Sample doc 1
-   */
-  switchId: PropTypes.string.isRequired,
-  /**
-   Sample doc 2
-   */
-  switchName: PropTypes.string
-};
