@@ -18,4 +18,4 @@ Distributed under the MIT License.
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 ## Contact us
 
-Email Us: support@minimals.cc
+Email Us: tmkasun@live.com
