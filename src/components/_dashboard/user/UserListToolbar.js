@@ -12,7 +12,7 @@ import {
   IconButton,
   Typography,
   OutlinedInput,
-  InputAdornment
+  InputAdornment,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -21,20 +21,20 @@ const RootStyle = styled(Toolbar)(({ theme }) => ({
   height: 96,
   display: 'flex',
   justifyContent: 'space-between',
-  padding: theme.spacing(0, 1, 0, 3)
+  padding: theme.spacing(0, 1, 0, 3),
 }));
 
 const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
   width: 240,
   transition: theme.transitions.create(['box-shadow', 'width'], {
     easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.shorter
+    duration: theme.transitions.duration.shorter,
   }),
   '&.Mui-focused': { width: 320, boxShadow: theme.customShadows.z8 },
   '& fieldset': {
-    borderWidth: `1px !important`,
-    borderColor: `${theme.palette.grey[500_32]} !important`
-  }
+    borderWidth: '1px !important',
+    borderColor: `${theme.palette.grey[500_32]} !important`,
+  },
 }));
 
 // ----------------------------------------------------------------------
@@ -42,7 +42,7 @@ const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
 UserListToolbar.propTypes = {
   numSelected: PropTypes.number,
   filterName: PropTypes.string,
-  onFilterName: PropTypes.func
+  onFilterName: PropTypes.func,
 };
 
 export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
@@ -51,8 +51,8 @@ export default function UserListToolbar({ numSelected, filterName, onFilterName 
       sx={{
         ...(numSelected > 0 && {
           color: 'primary.main',
-          bgcolor: 'primary.lighter'
-        })
+          bgcolor: 'primary.lighter',
+        }),
       }}
     >
       {numSelected > 0 ? (

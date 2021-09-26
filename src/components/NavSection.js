@@ -29,9 +29,9 @@ const ListItemStyle = styled((props) => <ListItemButton disableGutters {...props
       position: 'absolute',
       borderTopLeftRadius: 4,
       borderBottomLeftRadius: 4,
-      backgroundColor: theme.palette.primary.main
-    }
-  })
+      backgroundColor: theme.palette.primary.main,
+    },
+  }),
 );
 
 const ListItemIconStyle = styled(ListItemIcon)({
@@ -39,14 +39,14 @@ const ListItemIconStyle = styled(ListItemIcon)({
   height: 22,
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 });
 
 // ----------------------------------------------------------------------
 
 NavItem.propTypes = {
   item: PropTypes.object,
-  active: PropTypes.func
+  active: PropTypes.func,
 };
 
 function NavItem({ item, active }) {
@@ -63,12 +63,12 @@ function NavItem({ item, active }) {
     color: 'primary.main',
     fontWeight: 'fontWeightMedium',
     bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
-    '&:before': { display: 'block' }
+    '&:before': { display: 'block' },
   };
 
   const activeSubStyle = {
     color: 'text.primary',
-    fontWeight: 'fontWeightMedium'
+    fontWeight: 'fontWeightMedium',
   };
 
   if (children) {
@@ -77,7 +77,7 @@ function NavItem({ item, active }) {
         <ListItemStyle
           onClick={handleOpen}
           sx={{
-            ...(isActiveRoot && activeRootStyle)
+            ...(isActiveRoot && activeRootStyle),
           }}
         >
           <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
@@ -102,7 +102,7 @@ function NavItem({ item, active }) {
                   component={RouterLink}
                   to={path}
                   sx={{
-                    ...(isActiveSub && activeSubStyle)
+                    ...(isActiveSub && activeSubStyle),
                   }}
                 >
                   <ListItemIconStyle>
@@ -119,8 +119,8 @@ function NavItem({ item, active }) {
                         transition: (theme) => theme.transitions.create('transform'),
                         ...(isActiveSub && {
                           transform: 'scale(2)',
-                          bgcolor: 'primary.main'
-                        })
+                          bgcolor: 'primary.main',
+                        }),
                       }}
                     />
                   </ListItemIconStyle>
@@ -139,7 +139,7 @@ function NavItem({ item, active }) {
       component={RouterLink}
       to={path}
       sx={{
-        ...(isActiveRoot && activeRootStyle)
+        ...(isActiveRoot && activeRootStyle),
       }}
     >
       <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
@@ -150,7 +150,7 @@ function NavItem({ item, active }) {
 }
 
 NavSection.propTypes = {
-  navConfig: PropTypes.array
+  navConfig: PropTypes.array,
 };
 
 export default function NavSection({ navConfig, ...other }) {

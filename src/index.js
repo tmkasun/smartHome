@@ -18,7 +18,7 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </HelmetProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to enable client cache, register instead.

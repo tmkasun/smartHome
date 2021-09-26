@@ -6,7 +6,7 @@ import { Box } from '@mui/material';
 SvgIconStyle.propTypes = {
   src: PropTypes.string.isRequired,
   color: PropTypes.string,
-  sx: PropTypes.object
+  sx: PropTypes.object,
 };
 
 export default function SvgIconStyle({ src, color = 'inherit', sx }) {
@@ -23,7 +23,7 @@ export default function SvgIconStyle({ src, color = 'inherit', sx }) {
         ...(color === 'action' && { bgcolor: 'action.active' }),
         ...(color === 'disabled' && { bgcolor: 'action.disabled' }),
         ...(color === 'paper' && { bgcolor: 'background.paper' }),
-        ...sx
+        ...sx,
       }}
     />
   );

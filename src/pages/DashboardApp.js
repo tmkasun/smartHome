@@ -14,7 +14,7 @@ import {
   AppWebsiteVisits,
   AppTrafficBySite,
   AppCurrentSubject,
-  AppConversionRates
+  AppConversionRates,
 } from '../components/_dashboard/app';
 import devices from '../utils/devices';
 

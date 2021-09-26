@@ -17,7 +17,7 @@ import SvgIconStyle from '../../SvgIconStyle';
 
 const CardMediaStyle = styled('div')({
   position: 'relative',
-  paddingTop: 'calc(100% * 3 / 4)'
+  paddingTop: 'calc(100% * 3 / 4)',
 });
 
 const TitleStyle = styled(Link)({
@@ -25,7 +25,7 @@ const TitleStyle = styled(Link)({
   overflow: 'hidden',
   WebkitLineClamp: 2,
   display: '-webkit-box',
-  WebkitBoxOrient: 'vertical'
+  WebkitBoxOrient: 'vertical',
 });
 
 const AvatarStyle = styled(Avatar)(({ theme }) => ({
@@ -34,7 +34,7 @@ const AvatarStyle = styled(Avatar)(({ theme }) => ({
   height: 32,
   position: 'absolute',
   left: theme.spacing(3),
-  bottom: theme.spacing(-2)
+  bottom: theme.spacing(-2),
 }));
 
 const InfoStyle = styled('div')(({ theme }) => ({
@@ -42,7 +42,7 @@ const InfoStyle = styled('div')(({ theme }) => ({
   flexWrap: 'wrap',
   justifyContent: 'flex-end',
   marginTop: theme.spacing(3),
-  color: theme.palette.text.disabled
+  color: theme.palette.text.disabled,
 }));
 
 const CoverImgStyle = styled('img')({
@@ -50,14 +50,14 @@ const CoverImgStyle = styled('img')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  position: 'absolute'
+  position: 'absolute',
 });
 
 // ----------------------------------------------------------------------
 
 BlogPostCard.propTypes = {
   post: PropTypes.object.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number,
 };
 
 export default function BlogPostCard({ post, index }) {
@@ -68,7 +68,7 @@ export default function BlogPostCard({ post, index }) {
   const POST_INFO = [
     { number: comment, icon: messageCircleFill },
     { number: view, icon: eyeFill },
-    { number: share, icon: shareFill }
+    { number: share, icon: shareFill },
   ];
 
   return (
@@ -84,15 +84,15 @@ export default function BlogPostCard({ post, index }) {
                 width: '100%',
                 height: '100%',
                 position: 'absolute',
-                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72)
-              }
+                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
+              },
             }),
             ...(latestPostLarge && {
               pt: {
                 xs: 'calc(100% * 4 / 3)',
-                sm: 'calc(100% * 3 / 4.66)'
-              }
-            })
+                sm: 'calc(100% * 3 / 4.66)',
+              },
+            }),
           }}
         >
           <SvgIconStyle
@@ -104,7 +104,7 @@ export default function BlogPostCard({ post, index }) {
               zIndex: 9,
               bottom: -15,
               position: 'absolute',
-              ...((latestPostLarge || latestPost) && { display: 'none' })
+              ...((latestPostLarge || latestPost) && { display: 'none' }),
             }}
           />
           <AvatarStyle
@@ -116,8 +116,8 @@ export default function BlogPostCard({ post, index }) {
                 top: 24,
                 left: 24,
                 width: 40,
-                height: 40
-              })
+                height: 40,
+              }),
             }}
           />
 
@@ -130,8 +130,8 @@ export default function BlogPostCard({ post, index }) {
             ...((latestPostLarge || latestPost) && {
               bottom: 0,
               width: '100%',
-              position: 'absolute'
-            })
+              position: 'absolute',
+            }),
           }}
         >
           <Typography
@@ -151,8 +151,8 @@ export default function BlogPostCard({ post, index }) {
             sx={{
               ...(latestPostLarge && { typography: 'h5', height: 60 }),
               ...((latestPostLarge || latestPost) && {
-                color: 'common.white'
-              })
+                color: 'common.white',
+              }),
             }}
           >
             {title}
@@ -167,8 +167,8 @@ export default function BlogPostCard({ post, index }) {
                   alignItems: 'center',
                   ml: index === 0 ? 0 : 1.5,
                   ...((latestPostLarge || latestPost) && {
-                    color: 'grey.500'
-                  })
+                    color: 'grey.500',
+                  }),
                 }}
               >
                 <Box component={Icon} icon={info.icon} sx={{ width: 16, height: 16, mr: 0.5 }} />

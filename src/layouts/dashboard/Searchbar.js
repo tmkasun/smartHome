@@ -10,7 +10,7 @@ import {
   Button,
   InputAdornment,
   ClickAwayListener,
-  IconButton
+  IconButton,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -34,8 +34,8 @@ const SearchbarStyle = styled('div')(({ theme }) => ({
   backgroundColor: `${alpha(theme.palette.background.default, 0.72)}`,
   [theme.breakpoints.up('md')]: {
     height: APPBAR_DESKTOP,
-    padding: theme.spacing(0, 5)
-  }
+    padding: theme.spacing(0, 5),
+  },
 }));
 
 // ----------------------------------------------------------------------

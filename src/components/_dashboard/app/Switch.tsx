@@ -26,7 +26,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
   textAlign: 'center',
   padding: theme.spacing(5, 0),
   color: theme.palette.primary.darker,
-  backgroundColor: theme.palette.primary.lighter
+  backgroundColor: theme.palette.primary.lighter,
 }));
 
 export default function Switch(props) {
@@ -35,7 +35,7 @@ export default function Switch(props) {
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
   const {
-    seq: { data = {} }
+    seq: { data = {} },
   } = switchInfo || { seq: {} };
   const isOn = data.switch === 'on';
 
@@ -53,18 +53,18 @@ export default function Switch(props) {
     myHeaders.append('Content-Type', 'application/json');
 
     const raw = JSON.stringify({
-      isOn
+      isOn,
     });
 
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: 'follow'
+      redirect: 'follow',
     };
 
     fetch(`https://home.knnect.com/apis/switches/${switchId}/state`, requestOptions).finally(() =>
-      setIsLoading(false)
+      setIsLoading(false),
     );
     setSwitchInfo(nextSwitchState);
   };
@@ -72,7 +72,7 @@ export default function Switch(props) {
     setIsLoading(true);
     const requestOptions = {
       method: 'GET',
-      redirect: 'follow'
+      redirect: 'follow',
     };
     fetch(`https://home.knnect.com/apis/switches/${switchId}`, requestOptions)
       .then((response) => {
@@ -81,7 +81,9 @@ export default function Switch(props) {
         }
         return response.json();
       })
-      .then(setSwitchInfo)
+      .then((r) => {
+        setSwitchInfo(r);
+      })
       .catch((error) => {
         console.log('error', error);
         setError(error);
@@ -117,8 +119,8 @@ export default function Switch(props) {
           backgroundImage: (theme) =>
             `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0)} 0%, ${alpha(
               theme.palette.primary.dark,
-              0.24
-            )} 100%)`
+              0.24,
+            )} 100%)`,
         }}
       >
         {isLoading ? (
@@ -134,7 +136,7 @@ export default function Switch(props) {
       </Button>
       <Typography
         sx={{
-          textTransform: 'capitalize'
+          textTransform: 'capitalize',
         }}
         variant="h3"
       >
@@ -147,7 +149,7 @@ export default function Switch(props) {
           </Box>
           <Box sx={{ minWidth: 35 }}>
             <Typography variant="body2" color="text.secondary">{`${Math.round(
-              normalise(data.signalStrength)
+              normalise(data.signalStrength),
             )}%`}</Typography>
           </Box>
         </Box>

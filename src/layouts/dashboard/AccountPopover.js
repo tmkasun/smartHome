@@ -18,18 +18,18 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: homeFill,
-    linkTo: '/'
+    linkTo: '/',
   },
   {
     label: 'Profile',
     icon: personFill,
-    linkTo: '#'
+    linkTo: '#',
   },
   {
     label: 'Settings',
     icon: settings2Fill,
-    linkTo: '#'
-  }
+    linkTo: '#',
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -62,9 +62,9 @@ export default function AccountPopover() {
               height: '100%',
               borderRadius: '50%',
               position: 'absolute',
-              bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72)
-            }
-          })
+              bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
+            },
+          }),
         }}
       >
         <Avatar src={account.photoURL} alt="photoURL" />
@@ -101,7 +101,7 @@ export default function AccountPopover() {
               sx={{
                 mr: 2,
                 width: 24,
-                height: 24
+                height: 24,
               }}
             />
 

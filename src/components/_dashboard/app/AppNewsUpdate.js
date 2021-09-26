@@ -19,14 +19,14 @@ const NEWS = [...Array(5)].map((_, index) => {
     title: faker.name.title(),
     description: faker.lorem.paragraphs(),
     image: mockImgCover(setIndex),
-    postedAt: faker.date.soon()
+    postedAt: faker.date.soon(),
   };
 });
 
 // ----------------------------------------------------------------------
 
 NewsItem.propTypes = {
-  news: PropTypes.object.isRequired
+  news: PropTypes.object.isRequired,
 };
 
 function NewsItem({ news }) {

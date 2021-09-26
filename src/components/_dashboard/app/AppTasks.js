@@ -8,7 +8,7 @@ import {
   CardHeader,
   Typography,
   FormControlLabel,
-  Stack
+  Stack,
 } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -18,7 +18,7 @@ const TASKS = [
   'Add SCSS and JS files if required',
   'Stakeholder Meeting',
   'Scoping & Estimations',
-  'Sprint Showcase'
+  'Sprint Showcase',
 ];
 
 // ----------------------------------------------------------------------
@@ -26,7 +26,7 @@ const TASKS = [
 TaskItem.propTypes = {
   task: PropTypes.string,
   checked: PropTypes.bool,
-  formik: PropTypes.object
+  formik: PropTypes.object,
 };
 
 function TaskItem({ task, checked, formik, ...other }) {
@@ -44,8 +44,8 @@ function TaskItem({ task, checked, formik, ...other }) {
             sx={{
               ...(checked && {
                 color: 'text.disabled',
-                textDecoration: 'line-through'
-              })
+                textDecoration: 'line-through',
+              }),
             }}
           >
             {task}
@@ -59,11 +59,11 @@ function TaskItem({ task, checked, formik, ...other }) {
 export default function AppTasks() {
   const formik = useFormik({
     initialValues: {
-      checked: [TASKS[2]]
+      checked: [TASKS[2]],
     },
     onSubmit: (values) => {
       console.log(values);
-    }
+    },
   });
 
   const { values, handleSubmit } = formik;

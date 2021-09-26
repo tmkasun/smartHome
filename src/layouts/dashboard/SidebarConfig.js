@@ -10,13 +10,13 @@ const sidebarConfig = [
   {
     title: 'dashboard',
     path: '/dashboard/app',
-    icon: getIcon(pieChart2Fill)
+    icon: getIcon(pieChart2Fill),
   },
   {
     title: 'Banking',
     path: '/dashboard/banking',
-    icon: getIcon(creditCard)
-  }
+    icon: getIcon(creditCard),
+  },
 ];
 
 export default sidebarConfig;

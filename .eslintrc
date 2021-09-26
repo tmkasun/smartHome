@@ -8,23 +8,27 @@
     "airbnb",
     "prettier",
     "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "airbnb-typescript/base"
   ],
   "plugins": [
     "prettier",
     "react",
     "react-hooks"
   ],
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaVersion": 8,
     "requireConfigFile": false,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
-      "impliedStrict": true
+      "impliedStrict": true,
+      "jsx": true
     }
   },
   "rules": {
+    "import/extensions": "off", // Disable to allow import files without file extensions
     "import": 0,
     "max-len": 0,
     "no-alert": 0,
@@ -66,7 +70,7 @@
       {
         "printWidth": 100,
         "singleQuote": true,
-        "trailingComma": "none",
+        "trailingComma": "all",
         "tabWidth": 2
       }
     ]

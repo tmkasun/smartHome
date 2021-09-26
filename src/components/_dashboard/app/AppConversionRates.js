@@ -18,12 +18,12 @@ export default function AppConversionRates() {
       y: {
         formatter: (seriesName) => fNumber(seriesName),
         title: {
-          formatter: (seriesName) => `#${seriesName}`
-        }
-      }
+          formatter: (seriesName) => `#${seriesName}`,
+        },
+      },
     },
     plotOptions: {
-      bar: { horizontal: true, barHeight: '28%', borderRadius: 2 }
+      bar: { horizontal: true, barHeight: '28%', borderRadius: 2 },
     },
     xaxis: {
       categories: [
@@ -36,9 +36,9 @@ export default function AppConversionRates() {
         'South Korea',
         'Netherlands',
         'United States',
-        'United Kingdom'
-      ]
-    }
+        'United Kingdom',
+      ],
+    },
   });
 
   return (

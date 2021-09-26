@@ -28,7 +28,7 @@ const POST_TITLES = [
   'Akkers van Margraten',
   'Gradient Ticket icon',
   'Here’s a Dyson motorcycle concept that doesn’t ‘suck’!',
-  'How to Animate a SVG with border-image'
+  'How to Animate a SVG with border-image',
 ];
 
 const posts = [...Array(23)].map((_, index) => ({
@@ -42,8 +42,8 @@ const posts = [...Array(23)].map((_, index) => ({
   favorite: faker.datatype.number(),
   author: {
     name: faker.name.findName(),
-    avatarUrl: `/static/mock-images/avatars/avatar_${index + 1}.jpg`
-  }
+    avatarUrl: `/static/mock-images/avatars/avatar_${index + 1}.jpg`,
+  },
 }));
 
 export default posts;

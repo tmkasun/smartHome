@@ -14,8 +14,8 @@ import AuthSocial from '../components/authentication/AuthSocial';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
-    display: 'flex'
-  }
+    display: 'flex',
+  },
 }));
 
 const SectionStyle = styled(Card)(({ theme }) => ({
@@ -24,7 +24,7 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  margin: theme.spacing(2, 0, 2, 2)
+  margin: theme.spacing(2, 0, 2, 2),
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -34,7 +34,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
   minHeight: '100vh',
   flexDirection: 'column',
   justifyContent: 'center',
-  padding: theme.spacing(12, 0)
+  padding: theme.spacing(12, 0),
 }));
 
 // ----------------------------------------------------------------------

@@ -76,7 +76,7 @@ export default function BankCard(props) {
             <Typography gutterBottom variant="h4" component="div">
               {user}
               <IconButton
-                disabled={isLoading}
+                disabled={isLoading || !showAmount}
                 onClick={fetchData}
                 size="large"
                 aria-label="fingerprint"

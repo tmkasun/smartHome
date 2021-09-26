@@ -14,7 +14,7 @@ import shadows, { customShadows } from './shadows';
 // ----------------------------------------------------------------------
 
 ThemeConfig.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default function ThemeConfig({ children }) {
@@ -24,9 +24,9 @@ export default function ThemeConfig({ children }) {
       shape,
       typography,
       shadows,
-      customShadows
+      customShadows,
     }),
-    []
+    [],
   );
 
   const theme = createTheme(themeOptions);

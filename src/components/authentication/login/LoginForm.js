@@ -13,7 +13,7 @@ import {
   TextField,
   IconButton,
   InputAdornment,
-  FormControlLabel
+  FormControlLabel,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
@@ -25,19 +25,19 @@ export default function LoginForm() {
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required')
+    password: Yup.string().required('Password is required'),
   });
 
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
-      remember: true
+      remember: true,
     },
     validationSchema: LoginSchema,
     onSubmit: () => {
       navigate('/dashboard', { replace: true });
-    }
+    },
   });
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
@@ -73,7 +73,7 @@ export default function LoginForm() {
                     <Icon icon={showPassword ? eyeFill : eyeOffFill} />
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
             error={Boolean(touched.password && errors.password)}
             helperText={touched.password && errors.password}

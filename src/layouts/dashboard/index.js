@@ -16,7 +16,7 @@ const RootStyle = styled('div')({
   minHeight: '100%',
   overflow: 'hidden',
   background: 'rgb(234, 238, 243)',
-  height: '100vh'
+  height: '100vh',
 });
 
 const MainStyle = styled('div')(({ theme }) => ({
@@ -28,8 +28,8 @@ const MainStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     paddingTop: APP_BAR_DESKTOP + 24,
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
-  }
+    paddingRight: theme.spacing(2),
+  },
 }));
 
 // ----------------------------------------------------------------------

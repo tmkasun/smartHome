@@ -9,7 +9,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx ./src",
+    "lint": "eslint ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
     "sb": "start-storybook -s ./public/static -p 6006",
     "sb:ci": "start-storybook -s ./public/static -p 6006 --ci",
@@ -67,10 +67,11 @@
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.0.9",
     "react-router-dom": "^6.0.0-beta.1",
-    "react-scripts": "4.0.0",
+    "react-scripts": "^4.0.3",
     "simplebar": "^5.3.5",
     "simplebar-react": "^2.3.5",
     "start-server-and-test": "^1.13.1",
+    "typescript": "^4.4.3",
     "web-vitals": "^2.1.0",
     "workbox-background-sync": "^6.2.4",
     "workbox-broadcast-update": "^6.2.4",
@@ -96,8 +97,10 @@
     "@storybook/addon-links": "^6.3.7",
     "@storybook/addon-storyshots": "^6.3.7",
     "@storybook/react": "^6.3.7",
+    "@testing-library/react": "^12.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.8.1",
@@ -108,7 +111,11 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "msw": "^0.35.0",
     "msw-storybook-addon": "^1.2.0",
+    "openapi-backend": "^4.2.0",
     "prettier": "^2.3.1",
     "react-test-renderer": "^17.0.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

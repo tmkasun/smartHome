@@ -11,18 +11,18 @@ const LANGS = [
   {
     value: 'en',
     label: 'English',
-    icon: '/static/icons/ic_flag_en.svg'
+    icon: '/static/icons/ic_flag_en.svg',
   },
   {
     value: 'de',
     label: 'German',
-    icon: '/static/icons/ic_flag_de.svg'
+    icon: '/static/icons/ic_flag_de.svg',
   },
   {
     value: 'fr',
     label: 'French',
-    icon: '/static/icons/ic_flag_fr.svg'
-  }
+    icon: '/static/icons/ic_flag_fr.svg',
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -49,8 +49,9 @@ export default function LanguagePopover() {
           width: 44,
           height: 44,
           ...(open && {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity)
-          })
+            bgcolor: (theme) =>
+              alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
+          }),
         }}
       >
         <img src={LANGS[0].icon} alt={LANGS[0].label} />

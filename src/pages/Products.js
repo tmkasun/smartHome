@@ -8,7 +8,7 @@ import {
   ProductSort,
   ProductList,
   ProductCartWidget,
-  ProductFilterSidebar
+  ProductFilterSidebar,
 } from '../components/_dashboard/products';
 //
 import PRODUCTS from '../_mocks_/products';
@@ -24,11 +24,11 @@ export default function EcommerceShop() {
       category: '',
       colors: '',
       priceRange: '',
-      rating: ''
+      rating: '',
     },
     onSubmit: () => {
       setOpenFilter(false);
-    }
+    },
   });
 
   const { resetForm, handleSubmit } = formik;

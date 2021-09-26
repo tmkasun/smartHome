@@ -8,22 +8,22 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
+    backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8'
-  }
+    backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8',
+  },
 }));
 
 // Inspired by the former Facebook spinners.
 function FacebookCircularProgress(props) {
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box data-testid="fb-progress" sx={{ position: 'relative' }}>
       <CircularProgress
         variant="determinate"
         sx={{
-          color: (theme) => theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
+          color: (theme) => theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
         }}
         size={40}
         thickness={4}
@@ -39,8 +39,8 @@ function FacebookCircularProgress(props) {
           position: 'absolute',
           left: 0,
           [`& .${circularProgressClasses.circle}`]: {
-            strokeLinecap: 'round'
-          }
+            strokeLinecap: 'round',
+          },
         }}
         size={40}
         thickness={4}

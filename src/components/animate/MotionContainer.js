@@ -9,7 +9,7 @@ import { varWrapEnter } from './variants';
 
 MotionContainer.propTypes = {
   open: PropTypes.bool.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default function MotionContainer({ open, children, ...other }) {

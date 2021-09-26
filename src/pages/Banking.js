@@ -16,7 +16,7 @@ export default function DashboardApp() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://home.knnect.com/apis/banks`)
+    fetch('https://home.knnect.com/apis/banks')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');

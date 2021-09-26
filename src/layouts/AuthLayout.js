@@ -22,14 +22,14 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   justifyContent: 'space-between',
   [theme.breakpoints.up('md')]: {
     alignItems: 'flex-start',
-    padding: theme.spacing(7, 5, 0, 7)
-  }
+    padding: theme.spacing(7, 5, 0, 7),
+  },
 }));
 
 // ----------------------------------------------------------------------
 
 AuthLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default function AuthLayout({ children }) {
@@ -43,7 +43,7 @@ export default function AuthLayout({ children }) {
         <Typography
           variant="body2"
           sx={{
-            mt: { md: -2 }
+            mt: { md: -2 },
           }}
         >
           {children}

@@ -16,18 +16,18 @@ export default function Router() {
       children: [
         { path: '/dashboard', element: <Navigate to="/dashboard/app" replace /> },
         { path: '/dashboard/app', element: <DashboardApp /> },
-        { path: '/dashboard/banking', element: <Banking /> }
-      ]
+        { path: '/dashboard/banking', element: <Banking /> },
+      ],
     },
     {
       path: '/',
       element: <LogoOnlyLayout />,
       children: [
         { path: '/', element: <Navigate to="/dashboard" /> },
-        { path: '*', element: <Navigate to="/404" /> }
-      ]
+        { path: '*', element: <Navigate to="/404" /> },
+      ],
     },
 
-    { path: '*', element: <Navigate to="/404" replace /> }
+    { path: '*', element: <Navigate to="/404" replace /> },
   ]);
 }
