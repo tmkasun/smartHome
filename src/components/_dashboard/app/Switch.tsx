@@ -32,7 +32,7 @@ const RootStyle = styled(Card)(({ theme }) => ({
 export default function Switch(props) {
   const { switchId, switchName } = props;
   const [switchInfo, setSwitchInfo] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState<null | boolean>(null);
   const [error, setError] = useState(null);
   const {
     seq: { data = {} },
@@ -97,7 +97,7 @@ export default function Switch(props) {
   } else {
     icon = isOn ? bulbFilled : bulbOutlined;
   }
-
+  console.log(data);
   return (
     <RootStyle>
       <Button

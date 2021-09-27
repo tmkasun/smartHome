@@ -29,7 +29,12 @@ const Template = (args) => <Switch {...args} />;
 export const Default = Template.bind({});
 
 Default.parameters = {
-  msw: [rest.get('/apis/*', (req, res, ctx) => api.handleRequest(req, res, ctx))],
+  msw: [
+    rest.get('*/apis/*', (req, res, ctx) => {
+      req.path = req.url.pathname.replace('/apis', '');
+      return api.handleRequest(req, res, ctx);
+    }),
+  ],
 };
 
 Default.args = {

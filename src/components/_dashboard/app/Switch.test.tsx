@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElementToBeRemoved, screen } from '@testing-library/react';
+import { render, waitFor, waitForElementToBeRemoved, screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { OpenAPIBackend } from 'openapi-backend'; // https://github.com/anttiviljami/openapi-backend https://dev.to/epilot/testing-react-with-jest-and-openapi-mocks-8gc
@@ -7,7 +7,8 @@ import { OpenAPIBackend } from 'openapi-backend'; // https://github.com/anttivil
 import Switch from './Switch';
 
 const api = new OpenAPIBackend({
-  definition: '/home/kasun/projects/smartHome/swagger.yaml',
+  definition:
+    'https://raw.githubusercontent.com/tmkasun/me_api/master/swagger_server/swagger/swagger.yaml?token=AAZJBXNZJP3KZRCESH6MLMLBLKNH2',
 });
 
 api.register('notFound', (c, res, ctx) => res(ctx.status(404)));
@@ -18,8 +19,7 @@ api.register('notImplemented', async (c, res, ctx) => {
   return res(ctx.status(status), ctx.json(mock));
 });
 const server = setupServer(
-  rest.get('https://home.knnect.com/apis/*', (req, res, ctx) => {
-    // res(ctx.json({ greeting: 'hello there' }));
+  rest.get('*/apis/*', (req, res, ctx) => {
     req.path = req.url.pathname.replace('/apis', '');
     return api.handleRequest(req, res, ctx);
   }),
@@ -37,10 +37,15 @@ test('Sonoff switch default', async () => {
       name: /off/i,
     }),
   ).toBeDisabled();
-  await waitForElementToBeRemoved(() => screen.getByTestId('fb-progress'));
+  await waitForElementToBeRemoved(() => screen.getByTestId('fb-progress'), { timeout: 5000 });
+  await waitFor(() =>
+    screen.getByRole('heading', {
+      name: /device id: 100000140e/i,
+    }),
+  );
   expect(
     screen.getByRole('heading', {
-      name: /device id: 10011c4ca4/i,
+      name: /device id: 100000140e/i,
     }),
   ).toBeVisible();
   expect(
@@ -48,7 +53,4 @@ test('Sonoff switch default', async () => {
       name: /on/i,
     }),
   ).not.toBeDisabled();
-  // screen.getByRole('heading', {
-  //   name: /device id:/i,
-  // });
 });
