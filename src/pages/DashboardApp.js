@@ -2,20 +2,7 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
 // components
 import Page from '../components/Page';
-import {
-  AppTasks,
-  AppNewUsers,
-  AppBugReports,
-  AppItemOrders,
-  AppNewsUpdate,
-  Switch,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates,
-} from '../components/_dashboard/app';
+import { Switch } from '../components/_dashboard/app';
 import devices from '../utils/devices';
 
 // ----------------------------------------------------------------------

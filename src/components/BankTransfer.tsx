@@ -13,11 +13,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function RowRadioButtonsGroup(props) {
+export default function RowRadioButtonsGroup(props: any) {
   const { bank, accountNumber } = props;
   const [selection, setSelection] = React.useState('100');
   const [isTransferring, setIsTransferring] = React.useState(false);
   const [transferError, setTransferError] = React.useState(null);
+  console.log(transferError);
   const [customAmount, setCustomAmount] = React.useState('');
   const [reference, setReference] = React.useState('');
   const to = '044033301951101';
@@ -28,17 +29,20 @@ export default function RowRadioButtonsGroup(props) {
     const amount = selection === 'other' ? customAmount : selection;
     const raw = JSON.stringify({
       to,
-      amount: parseFloat(amount)
+      amount: parseFloat(amount),
     });
 
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: 'follow'
+      redirect: 'follow',
     };
 
-    fetch(`https://home.knnect.com/apis/banks/${bank}/${accountNumber}/trasfer`, requestOptions)
+    fetch(
+      `https://home.knnect.com/apis/banks/${bank}/${accountNumber}/trasfer`,
+      requestOptions as any,
+    )
       .then((response) => response.json())
       .then((result) => setReference(result.reference))
       .catch((error) => {
@@ -81,7 +85,7 @@ export default function RowRadioButtonsGroup(props) {
             autoFocus
             type="number"
             InputProps={{
-              startAdornment: <InputAdornment position="start">Rs.</InputAdornment>
+              startAdornment: <InputAdornment position="start">Rs.</InputAdornment>,
             }}
             id="custom-amount"
             label="Custom Amount"
@@ -106,7 +110,7 @@ export default function RowRadioButtonsGroup(props) {
               fontSize: 10,
               height: 20,
               width: '50%',
-              textAlign: 'center'
+              textAlign: 'center',
             }}
           >
             {reference}

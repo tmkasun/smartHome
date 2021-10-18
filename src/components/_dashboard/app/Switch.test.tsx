@@ -19,9 +19,11 @@ api.register('notImplemented', async (c, res, ctx) => {
   return res(ctx.status(status), ctx.json(mock));
 });
 const server = setupServer(
-  rest.get('*/apis/*', (req, res, ctx) => {
+  rest.get('*/apis/*', async (req, res, ctx) => {
     req.path = req.url.pathname.replace('/apis', '');
-    return api.handleRequest(req, res, ctx);
+    const a = await api.handleRequest(req, res, ctx);
+    await new Promise((r) => setTimeout(() => r(''), 5000));
+    return a;
   }),
 );
 
@@ -37,7 +39,7 @@ test('Sonoff switch default', async () => {
       name: /off/i,
     }),
   ).toBeDisabled();
-  await waitForElementToBeRemoved(() => screen.getByTestId('fb-progress'), { timeout: 5000 });
+  await waitForElementToBeRemoved(() => screen.getByTestId('fb-progress'), { timeout: 5000000 });
   await waitFor(() =>
     screen.getByRole('heading', {
       name: /device id: 100000140e/i,
@@ -53,4 +55,4 @@ test('Sonoff switch default', async () => {
       name: /on/i,
     }),
   ).not.toBeDisabled();
-});
+}, 800000);

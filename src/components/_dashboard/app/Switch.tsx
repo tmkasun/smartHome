@@ -19,7 +19,7 @@ import { BorderLinearProgress, FacebookCircularProgress } from './components/Sig
 const MIN = -90; // Minimum expected value
 const MAX = -30; // Maximium expected value
 // Function to normalise the values (MIN / MAX could be integrated)
-const normalise = (value) => ((value - MIN) * 100) / (MAX - MIN);
+const normalise = (value: number) => ((value - MIN) * 100) / (MAX - MIN);
 
 const RootStyle = styled(Card)(({ theme }) => ({
   boxShadow: 'none',
@@ -29,22 +29,22 @@ const RootStyle = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.primary.lighter,
 }));
 
-export default function Switch(props) {
+export default function Switch(props: { switchId: string; switchName: string }) {
   const { switchId, switchName } = props;
   const [switchInfo, setSwitchInfo] = useState(null);
-  const [isLoading, setIsLoading] = useState<null | boolean>(null);
+  const [isLoading, setIsLoading] = useState<undefined | boolean>();
   const [error, setError] = useState(null);
   const {
     seq: { data = {} },
-  } = switchInfo || { seq: {} };
+  }: { seq: { data: any } } = switchInfo || { seq: { data: {} } };
   const isOn = data.switch === 'on';
 
-  const handleOnClick = (state) => {
+  const handleOnClick = (state: any) => {
     setIsLoading(true);
-    let isOn = false;
-    const nextSwitchState = { ...switchInfo };
+    let newIsOn = false;
+    const nextSwitchState = { ...(switchInfo as any) };
     if (state === 'off') {
-      isOn = true;
+      newIsOn = true;
       nextSwitchState.seq.data.switch = 'on';
     } else {
       nextSwitchState.seq.data.switch = 'off';
@@ -53,7 +53,7 @@ export default function Switch(props) {
     myHeaders.append('Content-Type', 'application/json');
 
     const raw = JSON.stringify({
-      isOn,
+      isOn: newIsOn,
     });
 
     const requestOptions = {
@@ -63,8 +63,8 @@ export default function Switch(props) {
       redirect: 'follow',
     };
 
-    fetch(`https://home.knnect.com/apis/switches/${switchId}/state`, requestOptions).finally(() =>
-      setIsLoading(false),
+    fetch(`https://home.knnect.com/apis/switches/${switchId}/state`, requestOptions as any).finally(
+      () => setIsLoading(false),
     );
     setSwitchInfo(nextSwitchState);
   };
@@ -74,7 +74,7 @@ export default function Switch(props) {
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(`https://home.knnect.com/apis/switches/${switchId}`, requestOptions)
+    fetch(`https://home.knnect.com/apis/switches/${switchId}`, requestOptions as any)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');
@@ -84,9 +84,9 @@ export default function Switch(props) {
       .then((r) => {
         setSwitchInfo(r);
       })
-      .catch((error) => {
-        console.log('error', error);
-        setError(error);
+      .catch((er) => {
+        console.log('error', er);
+        setError(er);
       })
       .finally(() => setIsLoading(false));
   };
@@ -178,7 +178,7 @@ export default function Switch(props) {
         type="submit"
         variant="contained"
         loading={isLoading}
-        disabled={error}
+        disabled={error as unknown as boolean}
       >
         {data.switch === 'off' ? 'On' : 'Off'}
       </LoadingButton>

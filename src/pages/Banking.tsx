@@ -2,21 +2,25 @@ import { useEffect, useState } from 'react';
 // material
 import { Box, Grid, Container, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { APIOrigin } from 'utils/configs';
 
 // components
-import Page from '../components/Page';
-import BankCard from '../components/BankCard';
+import Page from 'components/Page';
+import BankCard from 'components/BankCard';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
-  const [banks, setBanks] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [banks, setBanks] = useState<[{ accountNumber: string; name: string; user: any }] | null>(
+    null,
+  );
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const [error, setError] = useState(null);
-
+  console.log(isLoading);
+  console.log(error);
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://home.knnect.com/apis/banks')
+    fetch(`${APIOrigin}/apis/banks`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');
@@ -24,9 +28,9 @@ export default function DashboardApp() {
         return response.json();
       })
       .then(setBanks)
-      .catch((error) => {
-        console.log('error', error);
-        setError(error);
+      .catch((e) => {
+        console.log('error', e);
+        setError(e);
       })
       .finally(() => setIsLoading(false));
   }, []);

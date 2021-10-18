@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Button from '@mui/material/Button';
 
-import BankTransfer from './BankTransfer';
+import BankTransfer from './BankTransfer.tsx';
 
 export default function BankCard(props) {
   const { accountNumber, name, user } = props;
@@ -30,9 +30,9 @@ export default function BankCard(props) {
         return response.json();
       })
       .then(setAccount)
-      .catch((error) => {
-        console.log('error', error);
-        setError(error);
+      .catch((e) => {
+        console.log('error', e);
+        setError(e);
       })
       .finally(() => setIsLoading(false));
   };
@@ -67,7 +67,7 @@ export default function BankCard(props) {
         boxShadow: 2,
         borderRadius: 1,
         p: 1,
-        minWidth: 300
+        minWidth: 300,
       }}
     >
       <Box sx={{ my: 3, mx: 2 }}>

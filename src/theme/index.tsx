@@ -11,13 +11,14 @@ import typography from './typography';
 import componentsOverride from './overrides';
 import shadows, { customShadows } from './shadows';
 
-// ----------------------------------------------------------------------
+declare module '@mui/material/styles' {
+  interface PaletteColor {
+    lighter?: string;
+    darker?: string;
+  }
+}
 
-ThemeConfig.propTypes = {
-  children: PropTypes.node,
-};
-
-export default function ThemeConfig({ children }) {
+export default function ThemeConfig({ children }: any) {
   const themeOptions = useMemo(
     () => ({
       palette,
@@ -29,7 +30,7 @@ export default function ThemeConfig({ children }) {
     [],
   );
 
-  const theme = createTheme(themeOptions);
+  const theme = createTheme(themeOptions as any);
   theme.components = componentsOverride(theme);
 
   return (
@@ -42,3 +43,9 @@ export default function ThemeConfig({ children }) {
     </StyledEngineProvider>
   );
 }
+
+// ----------------------------------------------------------------------
+
+ThemeConfig.propTypes = {
+  children: PropTypes.node,
+};

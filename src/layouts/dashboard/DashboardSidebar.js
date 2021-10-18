@@ -32,13 +32,6 @@ const AccountStyle = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.grey[200],
 }));
 
-// ----------------------------------------------------------------------
-
-DashboardSidebar.propTypes = {
-  isOpenSidebar: PropTypes.bool,
-  onCloseSidebar: PropTypes.func,
-};
-
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
 
@@ -113,3 +106,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     </RootStyle>
   );
 }
+
+// ----------------------------------------------------------------------
+
+DashboardSidebar.propTypes = {
+  isOpenSidebar: PropTypes.bool,
+  onCloseSidebar: PropTypes.func,
+};

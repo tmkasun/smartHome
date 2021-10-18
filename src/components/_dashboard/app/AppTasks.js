@@ -21,14 +21,6 @@ const TASKS = [
   'Sprint Showcase',
 ];
 
-// ----------------------------------------------------------------------
-
-TaskItem.propTypes = {
-  task: PropTypes.string,
-  checked: PropTypes.bool,
-  formik: PropTypes.object,
-};
-
 function TaskItem({ task, checked, formik, ...other }) {
   const { getFieldProps } = formik;
 
@@ -88,3 +80,11 @@ export default function AppTasks() {
     </Card>
   );
 }
+
+// ----------------------------------------------------------------------
+
+TaskItem.propTypes = {
+  task: PropTypes.string,
+  checked: PropTypes.bool,
+  formik: PropTypes.object,
+};

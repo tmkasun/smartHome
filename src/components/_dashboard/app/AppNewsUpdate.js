@@ -23,12 +23,6 @@ const NEWS = [...Array(5)].map((_, index) => {
   };
 });
 
-// ----------------------------------------------------------------------
-
-NewsItem.propTypes = {
-  news: PropTypes.object.isRequired,
-};
-
 function NewsItem({ news }) {
   const { image, title, description, postedAt } = news;
 
@@ -86,3 +80,9 @@ export default function AppNewsUpdate() {
     </Card>
   );
 }
+
+// ----------------------------------------------------------------------
+
+NewsItem.propTypes = {
+  news: PropTypes.object.isRequired,
+};

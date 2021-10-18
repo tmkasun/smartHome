@@ -33,13 +33,6 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
-
-Scrollbar.propTypes = {
-  children: PropTypes.node.isRequired,
-  sx: PropTypes.object,
-};
-
 export default function Scrollbar({ children, sx, ...other }) {
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent,
@@ -61,3 +54,10 @@ export default function Scrollbar({ children, sx, ...other }) {
     </RootStyle>
   );
 }
+
+// ----------------------------------------------------------------------
+
+Scrollbar.propTypes = {
+  children: PropTypes.node.isRequired,
+  sx: PropTypes.object,
+};

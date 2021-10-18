@@ -42,13 +42,6 @@ const ListItemIconStyle = styled(ListItemIcon)({
   justifyContent: 'center',
 });
 
-// ----------------------------------------------------------------------
-
-NavItem.propTypes = {
-  item: PropTypes.object,
-  active: PropTypes.func,
-};
-
 function NavItem({ item, active }) {
   const theme = useTheme();
   const isActiveRoot = active(item.path);
@@ -92,15 +85,14 @@ function NavItem({ item, active }) {
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {children.map((item) => {
-              const { title, path } = item;
-              const isActiveSub = active(path);
+            {children.map(({ title: itemTitle, path: itemPath }) => {
+              const isActiveSub = active(itemPath);
 
               return (
                 <ListItemStyle
-                  key={title}
+                  key={itemTitle}
                   component={RouterLink}
-                  to={path}
+                  to={itemPath}
                   sx={{
                     ...(isActiveSub && activeSubStyle),
                   }}
@@ -116,7 +108,7 @@ function NavItem({ item, active }) {
                         alignItems: 'center',
                         justifyContent: 'center',
                         bgcolor: 'text.disabled',
-                        transition: (theme) => theme.transitions.create('transform'),
+                        transition: (currentTheme) => currentTheme.transitions.create('transform'),
                         ...(isActiveSub && {
                           transform: 'scale(2)',
                           bgcolor: 'primary.main',
@@ -124,7 +116,7 @@ function NavItem({ item, active }) {
                       }}
                     />
                   </ListItemIconStyle>
-                  <ListItemText disableTypography primary={title} />
+                  <ListItemText disableTypography primary={itemTitle} />
                 </ListItemStyle>
               );
             })}
@@ -149,10 +141,6 @@ function NavItem({ item, active }) {
   );
 }
 
-NavSection.propTypes = {
-  navConfig: PropTypes.array,
-};
-
 export default function NavSection({ navConfig, ...other }) {
   const { pathname } = useLocation();
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
@@ -167,3 +155,14 @@ export default function NavSection({ navConfig, ...other }) {
     </Box>
   );
 }
+
+// ----------------------------------------------------------------------
+
+NavSection.propTypes = {
+  navConfig: PropTypes.array,
+};
+
+NavItem.propTypes = {
+  item: PropTypes.object,
+  active: PropTypes.func,
+};

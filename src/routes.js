@@ -5,6 +5,7 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import DashboardApp from './pages/DashboardApp';
 import Banking from './pages/Banking';
+import Telco from './pages/Telco';
 
 // ----------------------------------------------------------------------
 
@@ -17,6 +18,7 @@ export default function Router() {
         { path: '/dashboard', element: <Navigate to="/dashboard/app" replace /> },
         { path: '/dashboard/app', element: <DashboardApp /> },
         { path: '/dashboard/banking', element: <Banking /> },
+        { path: '/dashboard/telco', element: <Telco /> },
       ],
     },
     {

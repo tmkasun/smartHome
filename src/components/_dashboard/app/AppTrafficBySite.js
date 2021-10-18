@@ -35,12 +35,6 @@ const SOCIALS = [
   },
 ];
 
-// ----------------------------------------------------------------------
-
-SiteItem.propTypes = {
-  site: PropTypes.object,
-};
-
 function SiteItem({ site }) {
   const { icon, value, name } = site;
 
@@ -71,3 +65,9 @@ export default function AppTrafficBySite() {
     </Card>
   );
 }
+
+// ----------------------------------------------------------------------
+
+SiteItem.propTypes = {
+  site: PropTypes.object,
+};

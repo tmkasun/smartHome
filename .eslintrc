@@ -9,13 +9,10 @@
     "prettier",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
-    "airbnb-typescript/base"
+    "airbnb-typescript/base",
+    "plugin:import/typescript"
   ],
-  "plugins": [
-    "prettier",
-    "react",
-    "react-hooks"
-  ],
+  "plugins": ["prettier", "react", "react-hooks"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",

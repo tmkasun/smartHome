@@ -43,13 +43,6 @@ const TIMELINES = [
   },
 ];
 
-// ----------------------------------------------------------------------
-
-OrderItem.propTypes = {
-  item: PropTypes.object,
-  isLast: PropTypes.bool,
-};
-
 function OrderItem({ item, isLast }) {
   const { type, title, time } = item;
   return (
@@ -97,3 +90,10 @@ export default function AppOrderTimeline() {
     </Card>
   );
 }
+
+// ----------------------------------------------------------------------
+
+OrderItem.propTypes = {
+  item: PropTypes.object,
+  isLast: PropTypes.bool,
+};

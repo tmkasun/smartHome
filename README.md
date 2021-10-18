@@ -12,10 +12,16 @@ UI app was bootstrapped from [Minimal React Kit](https://minimal-kit-react.verce
 - Install dependencies: `npm install` or `yarn install`
 - Start the server: `npm run start` or `yarn start`
 
+## UIs
+
+- [Wireframes](https://excalidraw.com/#json=4535281894031360,y6_KoRzbl4FClhEIaRBgEQ)
+
 ## License
+
 Distributed under the MIT License.
 
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
+
 ## Contact us
 
 Email Us: tmkasun@live.com
