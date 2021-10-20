@@ -70,8 +70,8 @@
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "history": "^5.0.1",
-    "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
+    "notistack": "^2.0.2",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -123,6 +123,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "http-proxy-middleware": "^2.0.1",
+    "isomorphic-fetch": "^3.0.0",
     "msw": "^0.35.0",
     "msw-storybook-addon": "^1.2.0",
     "openapi-backend": "^4.2.0",
@@ -131,5 +132,17 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "globalSetup": "<rootDir>/src/test/jestGlobalSetup.ts"
   }
 }

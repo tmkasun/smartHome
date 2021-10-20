@@ -9,20 +9,21 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Button from '@mui/material/Button';
+import { APIOrigin } from 'utils/configs';
 
-import BankTransfer from './BankTransfer.tsx';
+import BankTransfer from './BankTransfer';
 
-export default function BankCard(props) {
+export default function BankCard(props: any) {
   const { accountNumber, name, user } = props;
-  const [account, setAccount] = useState(null);
+  const [account, setAccount] = useState<null | any>(null);
   const [showAmount, setShowAmount] = useState(false);
-  const [isLoading, setIsLoading] = useState(null);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const [error, setError] = useState<any | null>(null);
   // https://ef982b46-069d-44d2-abf3-36d755a962bd.mock.pstmn.io
   const fetchData = () => {
     setIsLoading(true);
     setError(null);
-    fetch(`https://home.knnect.com/apis/banks/${name}/${accountNumber}`)
+    fetch(`${APIOrigin}/banks/${name}/${accountNumber}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');

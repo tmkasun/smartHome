@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import { LoadingButton } from '@mui/lab';
 import { Card, Typography } from '@mui/material';
 // custom
-
+import { APIOrigin } from 'utils/configs';
 import { BorderLinearProgress, FacebookCircularProgress } from './components/SignalStrength';
 
 // ----------------------------------------------------------------------
@@ -63,8 +63,8 @@ export default function Switch(props: { switchId: string; switchName: string }) 
       redirect: 'follow',
     };
 
-    fetch(`https://home.knnect.com/apis/switches/${switchId}/state`, requestOptions as any).finally(
-      () => setIsLoading(false),
+    fetch(`${APIOrigin}/switches/${switchId}/state`, requestOptions as any).finally(() =>
+      setIsLoading(false),
     );
     setSwitchInfo(nextSwitchState);
   };
@@ -74,7 +74,7 @@ export default function Switch(props: { switchId: string; switchName: string }) 
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(`https://home.knnect.com/apis/switches/${switchId}`, requestOptions as any)
+    fetch(`${APIOrigin}/switches/${switchId}`, requestOptions as any)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');

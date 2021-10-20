@@ -20,7 +20,7 @@ export default function DashboardApp() {
   console.log(error);
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${APIOrigin}/apis/banks`)
+    fetch(`${APIOrigin}/banks`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Something went wrong');

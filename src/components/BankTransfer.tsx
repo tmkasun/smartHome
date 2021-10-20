@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { APIOrigin } from 'utils/configs';
 
 export default function RowRadioButtonsGroup(props: any) {
   const { bank, accountNumber } = props;
@@ -39,10 +40,7 @@ export default function RowRadioButtonsGroup(props: any) {
       redirect: 'follow',
     };
 
-    fetch(
-      `https://home.knnect.com/apis/banks/${bank}/${accountNumber}/trasfer`,
-      requestOptions as any,
-    )
+    fetch(`${APIOrigin}/banks/${bank}/${accountNumber}/trasfer`, requestOptions as any)
       .then((response) => response.json())
       .then((result) => setReference(result.reference))
       .catch((error) => {
