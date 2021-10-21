@@ -12,6 +12,7 @@ export const useAllowedNumbers: UsedAllowedHookDef = () => {
   useEffect(() => {
     async function asyncEffect() {
       try {
+        console.log(`APIOrigin =====> ${APIOrigin}`);
         const response = await fetch(`${APIOrigin}/telco/reload/allowed`);
         if (!response.ok) {
           throw new Error('Something went wrong');

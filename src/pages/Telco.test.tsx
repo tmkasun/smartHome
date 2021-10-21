@@ -1,4 +1,4 @@
-import { render, waitFor } from 'test/utils';
+import { render, waitFor, screen } from 'test/utils';
 import getMockServer, { resetMockHandler } from 'test/meAPI.mock';
 
 import Telco from './Telco';
@@ -22,5 +22,16 @@ afterAll(async () => {
 describe('Marketplace page', () => {
   test('Marketplace get connectors', async () => {
     render(<Telco />);
+    expect(
+      screen.getByRole('heading', {
+        name: /mobile center/i,
+      }),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('initial-loader')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('0711661919')).toBeInTheDocument();
+    });
+    expect(screen.getByText(/32\.23 rs/i)).toBeInTheDocument();
+    screen.logTestingPlaygroundURL();
   });
 });

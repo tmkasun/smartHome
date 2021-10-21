@@ -85,7 +85,7 @@ export default function TelcoPage() {
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Mobile Center</Typography>
-          {isLoading && <CircularProgress />}
+          {isLoading && <CircularProgress data-testid="initial-loader" />}
         </Box>
         <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
           <Grid item xs={12} sm={6}>

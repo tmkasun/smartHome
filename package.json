@@ -70,6 +70,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "history": "^5.0.1",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "notistack": "^2.0.2",
     "numeral": "^2.0.6",

@@ -74,7 +74,7 @@ export const getMockServer = async () => {
       error: 'something went wrong',
     });
     try {
-      const path = req.url.pathname.replace('/2.0', '');
+      const path = req.url.pathname.replace('/apis', '');
       const query = searchParamsToRequestQuery(req.url.searchParams);
       const { method, headers } = req;
       const oasRequest: Request = {

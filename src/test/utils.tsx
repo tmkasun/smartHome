@@ -10,35 +10,55 @@
  * entered into with WSO2 governing the purchase of this software and any
  * associated services.
  */
-// import React, { FC, ReactElement } from 'react';
-// import { render, RenderOptions } from '@testing-library/react';
-// import { IntlProvider } from 'react-intl';
-// import { ThemeProvider } from '@material-ui/core/styles';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import React, { FC, ReactElement } from 'react';
+import { render, RenderOptions } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
-// import useCreateChoreoTheme from 'theme/Theme';
+import { IconButton } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
+import ThemeConfig from 'theme';
+import CloseIcon from '@mui/icons-material/Close';
 
-// const GlobalProviders: FC = ({ children }) => {
-//   const theme = useCreateChoreoTheme();
-//   return (
-//     <Router>
-//       <IntlProvider locale="en" messages={{}}>
-//         <ThemeProvider theme={theme}>{children}</ThemeProvider>
-//       </IntlProvider>
-//     </Router>
-//   );
-// };
+const GlobalProviders: FC = ({ children }) => (
+  <HelmetProvider>
+    <Router>
+      <SnackbarProvider
+        hideIconVariant
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        dense
+        maxSnack={3}
+        ref={{ current: null }}
+        action={() => (
+          <IconButton size="large" onClick={() => {}}>
+            <CloseIcon />
+          </IconButton>
+        )}
+      >
+        <ThemeConfig>{children}</ThemeConfig>
+      </SnackbarProvider>
+    </Router>
+  </HelmetProvider>
+);
 
-// const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
-//   render(ui, { wrapper: GlobalProviders, ...options });
+const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
+  render(ui, { wrapper: GlobalProviders, ...options });
 
-export const searchParamsToRequestQuery = (searchParams: URLSearchParams) =>
-  JSON.parse(
+export const searchParamsToRequestQuery = (searchParams: URLSearchParams) => {
+  const queries = searchParams.toString();
+  if (!queries) {
+    return {};
+  }
+  return JSON.parse(
     `{"${decodeURI(searchParams.toString())
       .replace(/"/g, '\\"')
       .replace(/&/g, '","')
       .replace(/=/g, '":"')}"}`,
   );
+};
 
 export * from '@testing-library/react';
-// export { customRender as render };
+export { customRender as render };
