@@ -1,4 +1,3 @@
-import faker from 'faker';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import { formatDistance } from 'date-fns';
@@ -16,10 +15,10 @@ import Scrollbar from '../../Scrollbar';
 const NEWS = [...Array(5)].map((_, index) => {
   const setIndex = index + 1;
   return {
-    title: faker.name.title(),
-    description: faker.lorem.paragraphs(),
+    title: 'Foo',
+    description: 'lorem.paragraphs()',
     image: mockImgCover(setIndex),
-    postedAt: faker.date.soon(),
+    postedAt: new Date(),
   };
 });
 

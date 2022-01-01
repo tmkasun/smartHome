@@ -7,6 +7,7 @@
   "scripts": {
     "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
+    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
@@ -66,7 +67,6 @@
     "apexcharts": "^3.27.3",
     "change-case": "^4.1.2",
     "date-fns": "^2.23.0",
-    "faker": "^5.5.3",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "history": "^5.0.1",
@@ -129,7 +129,8 @@
     "msw-storybook-addon": "^1.2.0",
     "openapi-backend": "^4.2.0",
     "prettier": "^2.3.1",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "source-map-explorer": "^2.5.2"
   },
   "msw": {
     "workerDirectory": "public"

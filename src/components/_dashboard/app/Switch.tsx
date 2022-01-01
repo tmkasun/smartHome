@@ -11,9 +11,10 @@ import Button from '@mui/material/Button';
 import { LoadingButton } from '@mui/lab';
 import { Card, Typography } from '@mui/material';
 // custom
-import { APIOrigin } from 'utils/configs';
+import Configs from 'utils/configs';
 import { BorderLinearProgress, FacebookCircularProgress } from './components/SignalStrength';
 
+const APIOrigin = Configs.HOME_ORIGIN;
 // ----------------------------------------------------------------------
 
 const MIN = -90; // Minimum expected value

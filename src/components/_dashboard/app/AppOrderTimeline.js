@@ -1,4 +1,3 @@
-import faker from 'faker';
 import PropTypes from 'prop-types';
 // material
 import { Card, Typography, CardHeader, CardContent } from '@mui/material';
@@ -18,28 +17,13 @@ import { fDateTime } from '../../../utils/formatTime';
 const TIMELINES = [
   {
     title: '1983, orders, $4220',
-    time: faker.date.past(),
+    time: new Date('1983-01-01T00:00:00'),
     type: 'order1',
   },
   {
     title: '12 Invoices have been paid',
-    time: faker.date.past(),
+    time: new Date('1983-01-01T00:00:00'),
     type: 'order2',
-  },
-  {
-    title: 'Order #37745 from September',
-    time: faker.date.past(),
-    type: 'order3',
-  },
-  {
-    title: 'New order placed #XF-2356',
-    time: faker.date.past(),
-    type: 'order4',
-  },
-  {
-    title: 'New order placed #XF-2346',
-    time: faker.date.past(),
-    type: 'order5',
   },
 ];
 
