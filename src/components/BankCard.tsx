@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +20,7 @@ export default function BankCard(props: any) {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const [error, setError] = useState<any | null>(null);
   // https://ef982b46-069d-44d2-abf3-36d755a962bd.mock.pstmn.io
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     setIsLoading(true);
     setError(null);
     fetch(`${APIOrigin}/banks/${name}/${accountNumber}`)
@@ -36,12 +36,12 @@ export default function BankCard(props: any) {
         setError(e);
       })
       .finally(() => setIsLoading(false));
-  };
+  }, [accountNumber, name]);
   useEffect(() => {
     if (showAmount) {
       fetchData();
     }
-  }, [showAmount]);
+  }, [showAmount, fetchData]);
   const amountView = showAmount ? (
     <Chip
       variant="outlined"
