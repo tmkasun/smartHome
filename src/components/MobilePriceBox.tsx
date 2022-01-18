@@ -5,8 +5,10 @@ const MobilePriceBox = ({
   amount,
   isSelected,
   onClick,
+  packageName,
 }: {
   amount?: number;
+  packageName?: string;
   isSelected: boolean;
   onClick: () => void;
 }) => (
@@ -24,7 +26,8 @@ const MobilePriceBox = ({
       }}
       onClick={onClick}
     >
-      {`${amount} Rs`}
+      <Box>{`${amount} Rs`}</Box>
+      <Box color="text.secondary">{packageName}</Box>
     </Box>
   </Grid>
 );

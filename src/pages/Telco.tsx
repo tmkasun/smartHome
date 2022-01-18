@@ -24,13 +24,20 @@ const SubTitle = ({ children }: { children: string }) => (
   </Box>
 );
 
-const DEFAULT_AMOUNTS = [32.23, 51.34, 101.23, 995, 450];
+const DEFAULT_AMOUNTS = [
+  { amount: 32.23 },
+  { amount: 51.34 },
+  { amount: 101.23 },
+  { amount: 995, packageName: 'Dialog 85GB' },
+  { amount: 450, packageName: 'Dialog 35GB' },
+  { amount: 369, packageName: 'Mobitel all month' },
+];
 export default function TelcoPage() {
   const [allowedNumbers, , isLoading] = useAllowedNumbers();
   const [customNumber, setCustomNumber] = useState('');
   const [customAmount, setCustomAmount] = useState('');
   const [selectedNumber, setSelectedNumber] = useState('0711661919');
-  const [selectedAmount, setSelectedAmount] = useState(DEFAULT_AMOUNTS[0]);
+  const [selectedAmount, setSelectedAmount] = useState<Number>(DEFAULT_AMOUNTS[0].amount);
   // submitResponse, submitErrors,
   const [submitResponse, submitErrors, isSubmitting, topUp] = useSubmitTopUp();
   const { enqueueSnackbar } = useSnackbar();
@@ -101,12 +108,14 @@ export default function TelcoPage() {
                     <MobileRadioSelector
                       key={mobileNumber}
                       value={mobileNumber}
+                      mobileNumber={mobileNumber}
                       label={mobileNumber}
                       control={<Radio />}
                     />
                   ))}
                   <MobileRadioSelector
                     value="custom"
+                    mobileNumber={customNumber}
                     label={
                       <TextField
                         label="Other number"
@@ -130,7 +139,7 @@ export default function TelcoPage() {
                   alignItems="center"
                   spacing={2}
                 >
-                  {DEFAULT_AMOUNTS.map((amount) => (
+                  {DEFAULT_AMOUNTS.map(({ amount, packageName }) => (
                     <MobilePriceBox
                       isSelected={amount === selectedAmount}
                       onClick={() => {
@@ -138,6 +147,7 @@ export default function TelcoPage() {
                         setCustomAmount('');
                       }}
                       amount={amount}
+                      packageName={packageName}
                       key={amount}
                     />
                   ))}
