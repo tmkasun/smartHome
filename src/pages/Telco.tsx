@@ -28,9 +28,7 @@ const DEFAULT_AMOUNTS = [
   { amount: 32.23 },
   { amount: 51.34 },
   { amount: 101.23 },
-  { amount: 995, packageName: 'Dialog 85GB' },
-  { amount: 450, packageName: 'Dialog 35GB' },
-  { amount: 369, packageName: 'Mobitel all month' },
+  { amount: 650, packageName: 'Mobitel Unlimited' },
 ];
 export default function TelcoPage() {
   const [allowedNumbers, , isLoading] = useAllowedNumbers();
